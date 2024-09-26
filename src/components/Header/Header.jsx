@@ -9,17 +9,17 @@ const getNavLinkClass = ({ isActive }) => {
 
 export default function Header() {
   return (
-    <nav className={css.container}>
+    <header className={css.container}>
       <Logo />
 
-      <div className={css.nav}>
+      <nav className={css.nav}>
         <NavLink to="/" className={getNavLinkClass}>
           Home
         </NavLink>
         <NavLink to="/catalog" className={getNavLinkClass}>
           Catalog
         </NavLink>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }
