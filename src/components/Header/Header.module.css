@@ -1,0 +1,23 @@
+.container {
+  padding: 28px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.nav {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.link {
+  color: var(--main);
+}
+
+.active {
+  color: var(--button-hover);
+}
