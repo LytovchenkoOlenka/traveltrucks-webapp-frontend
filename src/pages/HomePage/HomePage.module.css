@@ -1,6 +1,5 @@
 .container {
-  padding: 260px 64px;
-  /* position: relative; */
+  margin-top: 260px;
 }
 
 .container::before {
