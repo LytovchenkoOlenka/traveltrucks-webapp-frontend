@@ -95,7 +95,7 @@ export default function CamperCard() {
           ))}
         </ul>
 
-        <Link className={css.button} to={`/catalog/{data.id}`}>
+        <Link className="button" to={`/catalog/{data.id}`}>
           Show More
         </Link>
       </div>

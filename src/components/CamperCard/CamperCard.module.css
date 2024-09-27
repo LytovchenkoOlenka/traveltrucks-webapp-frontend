@@ -6,11 +6,6 @@
   padding: 24px;
 }
 
-/* .containerCard img {
-  width: 292px;
-  height: 320px;
-} */
-
 .camperInfo {
   display: flex;
   flex-direction: column;
@@ -96,7 +91,7 @@
   color: var(--main);
 }
 
-.button {
+/* .button {
   display: inline-block;
   border-radius: 200px;
   padding: 16px 48px;
@@ -111,4 +106,4 @@
 
 .button:hover {
   background-color: var(--button-hover);
-}
+} */

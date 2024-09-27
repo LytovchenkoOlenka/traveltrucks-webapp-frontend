@@ -1,18 +1,5 @@
-.generalContainer {
+.pageContainer {
   display: flex;
   gap: 64px;
-  padding: 24px 64px;
+  padding: 48px 64px 52px;
 }
-
-.firthCont {
-  width: 360px;
-  height: 768px;
-  border: 1px solid var(--light-gray);
-  border-radius: 20px;
-  padding: 24px;
-}
-
-/* .secondCont {
-  width: 888px;
-  height: 768px;
-} */

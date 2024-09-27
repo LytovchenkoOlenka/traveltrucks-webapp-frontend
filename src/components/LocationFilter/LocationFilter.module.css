@@ -1,0 +1,43 @@
+.locationContainer {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.locationInput {
+  border-radius: 12px;
+  padding: 18px 48px;
+  width: 100%;
+  background-color: var(--inputs);
+  border: none;
+
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.locationContainer label {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+
+.locationContainer::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.mapIcon {
+  position: absolute;
+  /* width: 20px;
+  height: 20px; */
+  font-size: 20px;
+  left: 20px;
+}
