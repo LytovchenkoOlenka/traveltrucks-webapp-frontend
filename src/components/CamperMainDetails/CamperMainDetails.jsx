@@ -48,7 +48,7 @@ const data = {
 
 export default function CamperMainDetails() {
   return (
-    <div className={css.container}>
+    <section className={css.sectionContainer}>
       <div>
         <h2 className={css.title}>{data.name}</h2>
 
@@ -78,6 +78,6 @@ export default function CamperMainDetails() {
       </ul>
 
       <p className={css.description}>{data.description}</p>
-    </div>
+    </section>
   );
 }

@@ -1,4 +1,4 @@
-.container {
+.sectionContainer {
   display: flex;
   flex-direction: column;
   gap: 28px;
