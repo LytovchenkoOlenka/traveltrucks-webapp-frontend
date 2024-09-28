@@ -35,13 +35,17 @@ body {
 }
 
 main {
-  padding-left: 64px;
-  padding-right: 64px;
+  padding: 48px 64px;
 }
 
-section {
+/* section {
   padding-top: 48px;
   padding-bottom: 48px;
+} */
+
+menu {
+  margin: 0;
+  padding: 0;
 }
 
 h1,
