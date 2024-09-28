@@ -1,0 +1,41 @@
+.featuresContainer {
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 44px 52px;
+  background-color: var(--inputs);
+  width: 100%;
+  height: 100%;
+}
+
+.empty {
+  width: 527px;
+  height: 104px;
+  background-color: var(--white);
+  margin-bottom: 100px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.detailsList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 8px;
+  margin: 0;
+}
+
+.detailLabel {
+  font-size: 16px;
+}
+
+.detailValue {
+  font-size: 16px;
+  text-align: right;
+  margin: 0;
+}
