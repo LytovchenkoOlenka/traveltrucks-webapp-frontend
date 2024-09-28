@@ -1,0 +1,49 @@
+.bookingContainer {
+  box-sizing: border-box;
+  border: 1px solid var(--light-gray);
+  border-radius: 10px;
+  padding: 44px 57px;
+  /* width: 641px; */
+  height: 588px;
+}
+
+.formTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.formDescr {
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--gray);
+  margin-bottom: 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 527px;
+}
+
+.input {
+  border-radius: 12px;
+  padding: 18px;
+  background: var(--inputs);
+  border: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--gray);
+}
+
+.form button {
+  margin: 10px auto 0;
+}
+
+.textArea {
+  resize: none;
+  height: 82px;
+}
