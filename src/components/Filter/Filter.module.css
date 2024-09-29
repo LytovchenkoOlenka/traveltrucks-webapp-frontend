@@ -25,7 +25,6 @@
 }
 
 .checkFilter {
-  /* position: relative; */
   border: 1px solid var(--light-gray);
   border-radius: 12px;
   padding: 20px 20px;
@@ -39,9 +38,6 @@
   text-align: center;
   cursor: pointer;
 
-  /* width: 112px;
-  height: 96px; */
-
   transition: 0.3s ease;
 }
 
@@ -49,10 +45,8 @@
   display: none;
 }
 
-.checkboxGroup input:checked + .checkboxLabel {
-  border: 1px solid var(--button-hover);
-}
-
+.active,
+.active:hover,
 .checkFilter:hover {
   border: 1px solid var(--button-hover);
 }
