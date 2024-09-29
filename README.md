@@ -21,6 +21,6 @@
 
 ## Інформація про автора
 
-Автор: [Olena Lytovchenko]
-Mail: [lytovchenkohelen@gmail.com]
-GitHub: [https://github.com/LytovchenkoOlenka]
+**Автор**: [Olena Lytovchenko]
+**Mail**: [lytovchenkohelen@gmail.com]
+**GitHub**: [https://github.com/LytovchenkoOlenka]
