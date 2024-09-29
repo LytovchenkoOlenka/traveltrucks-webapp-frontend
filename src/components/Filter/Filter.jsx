@@ -4,6 +4,7 @@ export default function Filter() {
   return (
     <div className={css.container}>
       <h3 className={css.titleFilters}>Filters</h3>
+
       {/* Фільтри обладнання */}
 
       <div className={css.filterWraper}>
