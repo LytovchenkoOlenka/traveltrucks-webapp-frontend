@@ -13,19 +13,6 @@ export default function LocationFilter() {
     dispatch(changeLocation(event.target.value));
   };
 
-  // // Локальний стан для зберігання значення поля вводу
-  // const [inputValue, setInputValue] = useState(location); // Ініціалізуємо з поточного значення
-
-  // // Обробка зміни в полі вводу
-  // const handleInputChange = (event) => {
-  //   setInputValue(event.target.value); // Оновлюємо тільки локальний стан
-  // };
-
-  // // Обробка натискання кнопки "Search"
-  // const handleSearch = () => {
-  //   dispatch(changeLocation(inputValue)); // Передаємо значення з локального стану в Redux
-  // };
-
   return (
     <div className={css.locationContainer}>
       <label htmlFor="location">Location</label>
