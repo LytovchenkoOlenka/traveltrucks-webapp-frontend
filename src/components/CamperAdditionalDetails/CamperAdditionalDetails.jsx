@@ -4,7 +4,7 @@ import Features from "../../components/Features/Features";
 import Reviews from "../../components/Reviews/Reviews";
 import BookingForm from "../BookingForm/BookingForm";
 
-export default function CamperAdditionalDetails() {
+export default function CamperAdditionalDetails({ data }) {
   const [activeComponent, setActiveComponent] = useState("Features");
 
   return (
@@ -23,11 +23,9 @@ export default function CamperAdditionalDetails() {
           Reviews
         </button>
       </menu>
-
-      {/*  */}
       <div className={css.infoContainer}>
         <div className={css.leftContainer}>
-          {activeComponent === "Features" && <Features />}
+          {activeComponent === "Features" && <Features data={data} />}
           {activeComponent === "Reviews" && <Reviews />}
         </div>
         <BookingForm />
