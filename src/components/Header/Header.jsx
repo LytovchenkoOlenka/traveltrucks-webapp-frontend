@@ -13,10 +13,10 @@ export default function Header() {
       <Logo />
 
       <nav className={css.nav}>
-        <NavLink to="/" className={getNavLinkClass}>
+        <NavLink to="/" className={getNavLinkClass} end>
           Home
         </NavLink>
-        <NavLink to="/catalog" className={getNavLinkClass}>
+        <NavLink to="/catalog" className={getNavLinkClass} end>
           Catalog
         </NavLink>
       </nav>
