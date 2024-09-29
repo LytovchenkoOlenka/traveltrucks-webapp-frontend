@@ -1,4 +1,5 @@
 import "./App.css";
+import { Toaster } from "react-hot-toast";
 import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Layout>
+      <Toaster />
     </>
   );
 }
