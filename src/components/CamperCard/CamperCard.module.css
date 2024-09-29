@@ -6,6 +6,13 @@
   padding: 24px;
 }
 
+.mainImage {
+  border-radius: 10px;
+  max-width: 292px;
+  height: 320px;
+  object-fit: cover;
+}
+
 .camperInfo {
   display: flex;
   flex-direction: column;
