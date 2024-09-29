@@ -33,6 +33,15 @@
   padding: 18px;
   background: var(--inputs);
   border: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--main-black);
+}
+
+.input::placeholder {
+  font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
