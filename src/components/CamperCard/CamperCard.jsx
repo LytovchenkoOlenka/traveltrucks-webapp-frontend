@@ -3,6 +3,7 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { SlMap } from "react-icons/sl";
 import { FaStar } from "react-icons/fa";
 import FeaturesList from "../FeaturesList/FeaturesList";
+import { Link } from "react-router-dom";
 import { formatLocation, formatPrice } from "../../utils/formatters";
 
 export default function CamperCard({ data }) {
@@ -39,22 +40,18 @@ export default function CamperCard({ data }) {
         <p className={css.description}>{data.description}</p>
 
         <FeaturesList data={data} />
-        {/* <ul className={css.featuresList}>
-          {filtredFeatures.map((feature) => (
-            <li key={feature} className={css.featuresItem}>
-              <p className={css.featureText}>{feature}</p>
-            </li>
-          ))}
-        </ul> */}
 
-        <a
+        {/* <a
           className="button"
           href={`/catalog/${data.id}`}
           target="_blank"
           rel="noopener noreferrer"
         >
           Show More
-        </a>
+        </a> */}
+        <Link className="button" to={`/catalog/${data.id}`}>
+          Show More
+        </Link>
       </div>
     </div>
   );
