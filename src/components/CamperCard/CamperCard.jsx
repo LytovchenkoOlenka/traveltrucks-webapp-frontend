@@ -6,6 +6,7 @@ import FeaturesList from "../FeaturesList/FeaturesList";
 import { Link } from "react-router-dom";
 import { formatLocation, formatPrice } from "../../utils/formatters";
 
+// Не реалізована можливість додавати у вибране. На доробці.
 export default function CamperCard({ data }) {
   const image = data.gallery[0];
 
@@ -41,6 +42,7 @@ export default function CamperCard({ data }) {
 
         <FeaturesList data={data} />
 
+        {/* ДО ВИПРАВЛЕННЯ.Через звичайне посилання реалізується відкриття в новій вкладці, але версель не відкриває. */}
         {/* <a
           className="button"
           href={`/catalog/${data.id}`}

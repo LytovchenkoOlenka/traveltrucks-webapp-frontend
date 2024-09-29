@@ -17,6 +17,7 @@ const data = {
   ],
 };
 
+// Оцінка зірочками на доробці.
 export default function Reviews() {
   return (
     <div className={css.reviewsContainer}>

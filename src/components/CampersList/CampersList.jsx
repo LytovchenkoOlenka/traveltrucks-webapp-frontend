@@ -3,16 +3,14 @@ import CamperCard from "../CamperCard/CamperCard";
 import { selectFiltredCampers } from "../../redux/filters/selectors";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-// import { selectCampers } from "../../redux/filters/selectors";
 
 export default function CampersList() {
   const filteredCampers = useSelector(selectFiltredCampers);
-  // const { items } = useSelector(selectCampers);
 
-  const [visibleCount, setVisibleCount] = useState(4); // Початково показуємо 4 картки
-
+  // ДО ВИПРАВЛЕННЯ. Пагінація зараз дуже примітивна. Буде розширена.
+  const [visibleCount, setVisibleCount] = useState(4);
   const handleLoadMore = () => {
-    setVisibleCount((prevCount) => prevCount + 4); // Збільшуємо кількість видимих карток на 4
+    setVisibleCount((prevCount) => prevCount + 4);
   };
 
   return (
