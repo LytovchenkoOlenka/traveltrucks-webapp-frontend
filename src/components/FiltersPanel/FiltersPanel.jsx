@@ -54,8 +54,7 @@ export default function FiltersPanel() {
           <h4 className={css.title}>Vehicle Equipment</h4>
 
           <div className={css.filterGroup}>
-            {/* Динамічний рендер чекбоксів */}
-            {["AC", "Automatic", "Kitchen", "TV", "Bathroom"].map(
+            {["AC", "TV", "Kitchen", "Bathroom", "Automatic"].map(
               (equipment) => (
                 <label
                   className={getActiveClass(localEquipment.includes(equipment))}
@@ -80,8 +79,6 @@ export default function FiltersPanel() {
           <h4 className={css.title}>Vehicle Type</h4>
 
           <div className={css.filterGroup}>
-            {/* Динамічний рендер кнопок */}
-
             {["Van", "Fully Integrated", "Alcove"].map((type) => (
               <button
                 key={type}

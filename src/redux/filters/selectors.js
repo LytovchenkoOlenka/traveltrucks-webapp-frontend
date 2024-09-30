@@ -4,16 +4,33 @@ export const selectCampers = (state) => state.campers;
 export const selectFilters = (state) => state.filters;
 export const selectCampersInfo = (state) => state.campers.items;
 
+const equipmentKeyMap = {
+  AC: "AC",
+  TV: "TV",
+  Kitchen: "kitchen",
+  Bathroom: "bathroom",
+  Automatic: "automatic",
+};
+
+const formKeyMap = {
+  Van: "van",
+  "Fully Integrated": "fullyIntegrated",
+  Alcove: "alcove",
+};
+
 export const selectFiltredCampers = createSelector(
   [selectCampersInfo, selectFilters],
   (campers, filters) => {
     const { location, vehicleEquipment, vehicleType } = filters;
 
     const lowerCaseLocation = location.trim().toLowerCase();
-    const lowerCaseEquipment = vehicleEquipment.map((item) =>
-      item.toLowerCase()
+
+    const normalizedEquipment = vehicleEquipment.map(
+      (item) => equipmentKeyMap[item] || item.toLowerCase()
     );
-    const lowerCaseVehicleType = vehicleType.toLowerCase();
+
+    const normalizedVehicleType =
+      formKeyMap[vehicleType] || vehicleType.toLowerCase();
 
     let filteredCampers = campers;
 
@@ -23,18 +40,24 @@ export const selectFiltredCampers = createSelector(
       );
     }
 
-    if (lowerCaseEquipment.length > 0) {
+    if (normalizedEquipment.length > 0) {
       filteredCampers = filteredCampers.filter((camper) =>
-        lowerCaseEquipment.every(
-          (equipment) => camper[equipment.toLowerCase()] === true
-        )
+        normalizedEquipment.every((equipment) => {
+          if (equipment === "automatic") {
+            return camper.transmission === equipment;
+          }
+          return camper[equipment] === true;
+        })
       );
     }
 
-    if (lowerCaseVehicleType.length > 0) {
-      filteredCampers = filteredCampers.filter(
-        (camper) => camper.form.toLowerCase() === lowerCaseVehicleType
-      );
+    if (normalizedVehicleType.length > 0) {
+      filteredCampers = filteredCampers.filter((camper) => {
+        console.log(
+          `Checking vehicle type: ${camper.form} === ${normalizedVehicleType}`
+        );
+        return camper.form === normalizedVehicleType;
+      });
     }
 
     return filteredCampers;
