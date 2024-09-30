@@ -9,24 +9,31 @@ export const selectFiltredCampers = createSelector(
   (campers, filters) => {
     const { location, vehicleEquipment, vehicleType } = filters;
 
+    const lowerCaseLocation = location.trim().toLowerCase();
+    const lowerCaseEquipment = vehicleEquipment.map((item) =>
+      item.toLowerCase()
+    );
+    const lowerCaseVehicleType = vehicleType.toLowerCase();
+
     let filteredCampers = campers;
 
-    if (location.trim() !== "") {
-      const lowerCaseQuery = location.toLowerCase();
+    if (lowerCaseLocation) {
       filteredCampers = filteredCampers.filter((camper) =>
-        camper.location.toLowerCase().includes(lowerCaseQuery)
+        camper.location.toLowerCase().includes(lowerCaseLocation)
       );
     }
 
-    if (vehicleEquipment.length > 0) {
+    if (lowerCaseEquipment.length > 0) {
       filteredCampers = filteredCampers.filter((camper) =>
-        vehicleEquipment.every((equipment) => camper[equipment] === true)
+        lowerCaseEquipment.every(
+          (equipment) => camper[equipment.toLowerCase()] === true
+        )
       );
     }
 
-    if (vehicleType.length > 0) {
-      filteredCampers = filteredCampers.filter((camper) =>
-        vehicleType.includes(camper.form)
+    if (lowerCaseVehicleType.length > 0) {
+      filteredCampers = filteredCampers.filter(
+        (camper) => camper.form.toLowerCase() === lowerCaseVehicleType
       );
     }
 
