@@ -26,7 +26,7 @@ export default function CamperAdditionalDetails({ data }) {
       <div className={css.infoContainer}>
         <div className={css.leftContainer}>
           {activeComponent === "Features" && <Features data={data} />}
-          {activeComponent === "Reviews" && <Reviews />}
+          {activeComponent === "Reviews" && <Reviews data={data} />}
         </div>
         <BookingForm />
       </div>
