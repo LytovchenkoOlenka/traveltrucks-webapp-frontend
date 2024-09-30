@@ -20,8 +20,9 @@
 .detailsList {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  row-gap: 8px;
+  gap: 16px;
   margin: 0;
+  text-transform: capitalize;
 }
 
 .detailLabel {
