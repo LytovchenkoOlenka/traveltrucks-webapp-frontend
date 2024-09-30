@@ -11,6 +11,7 @@
   padding: 12px 18px;
   width: max-content;
   background: var(--badges);
+  mix-blend-mode: multiply;
   display: flex;
   justify-content: center;
   align-items: center;

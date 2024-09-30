@@ -1,6 +1,7 @@
 import css from "./CamperMainDetails.module.css";
 import { SlMap } from "react-icons/sl";
 import { FaStar } from "react-icons/fa";
+import { formatPrice } from "../../utils/formatters";
 
 export default function CamperMainDetails({ data }) {
   return (
@@ -18,7 +19,7 @@ export default function CamperMainDetails({ data }) {
             <p className={css.textLocation}>{data.location}</p>
           </span>
         </div>
-        <p className={css.price}>€{data.price}</p>
+        <p className={css.price}>€{formatPrice(data.price)}</p>
       </div>
 
       <ul className={css.gallery}>
