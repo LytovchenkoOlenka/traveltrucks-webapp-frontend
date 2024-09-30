@@ -3,7 +3,7 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { SlMap } from "react-icons/sl";
 import { FaStar } from "react-icons/fa";
 import FeaturesList from "../FeaturesList/FeaturesList";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { formatLocation, formatPrice } from "../../utils/formatters";
 
 // Не реалізована можливість додавати у вибране. На доробці.
@@ -43,17 +43,17 @@ export default function CamperCard({ data }) {
         <FeaturesList data={data} />
 
         {/* ДО ВИПРАВЛЕННЯ.Через звичайне посилання реалізується відкриття в новій вкладці, але версель не відкриває. */}
-        {/* <a
+        <a
           className="button"
           href={`/catalog/${data.id}`}
           target="_blank"
           rel="noopener noreferrer"
         >
           Show More
-        </a> */}
-        <Link className="button" to={`/catalog/${data.id}`}>
+        </a>
+        {/* <Link className="button" to={`/catalog/${data.id}`}>
           Show More
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
