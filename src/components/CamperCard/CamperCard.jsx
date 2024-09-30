@@ -1,19 +1,33 @@
 import css from "./CamperCard.module.css";
-import { useState } from "react";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { SlMap } from "react-icons/sl";
 import { FaStar } from "react-icons/fa";
 import FeaturesList from "../FeaturesList/FeaturesList";
 import { formatLocation, formatPrice } from "../../utils/formatters";
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from "../../redux/favorites/slice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectFavorites } from "../../redux/favorites/selectors";
+
 import clsx from "clsx";
 
-// Не реалізована можливість додавати у вибране. На доробці.
+//Додається у обране, але одразу, а не після перезавантаження. На доробці.
 export default function CamperCard({ data }) {
   const image = data.gallery[0];
-  const [isFavorite, setIsFavorite] = useState(false);
+  const dispatch = useDispatch();
+  const favorites = useSelector(selectFavorites);
+  console.log(favorites);
+
+  const isFavorite = favorites.some((camper) => camper.id === data.id);
 
   const handleFavoriteClick = () => {
-    setIsFavorite((prev) => !prev);
+    if (isFavorite) {
+      dispatch(removeFromFavorites({ id: data.id }));
+    } else {
+      dispatch(addToFavorites(data));
+    }
   };
 
   return (
