@@ -6,12 +6,24 @@ import {
   changeVehicleEquipment,
   changeVehicleType,
 } from "../../redux/filters/slice";
+import sprite from "../../assets/icons.svg";
 
 import { selectFilters } from "../../redux/filters/selectors";
 import clsx from "clsx";
 
 const getActiveClass = (isSelected) => {
   return clsx(css.checkFilter, isSelected && css.active);
+};
+
+const iconsMap = {
+  AC: "icon-ac",
+  TV: "icon-tv",
+  Kitchen: "icon-kitchen",
+  Bathroom: "icon-bathroom",
+  Automatic: "icon-automatic",
+  Van: "icon-van",
+  "Fully Integrated": "icon-fully",
+  Alcove: "icon-alcove",
 };
 
 export default function FiltersPanel() {
@@ -65,6 +77,9 @@ export default function FiltersPanel() {
                     checked={localEquipment.includes(equipment)}
                     onChange={handleEquipmentChange}
                   />
+                  <svg className={css.icon}>
+                    <use href={`${sprite}#${iconsMap[equipment]}`} />
+                  </svg>
                   {equipment}
                 </label>
               )
@@ -85,12 +100,16 @@ export default function FiltersPanel() {
                 className={getActiveClass(localType === type)}
                 onClick={() => handleTypeChange(type)}
               >
+                <svg className={css.icon}>
+                  <use href={`${sprite}#${iconsMap[type]}`} />
+                </svg>
                 {type}
               </button>
             ))}
           </div>
         </div>
       </div>
+
       <button className="button" type="button" onClick={handleSearch}>
         Search
       </button>
