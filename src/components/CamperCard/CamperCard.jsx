@@ -1,13 +1,20 @@
 import css from "./CamperCard.module.css";
+import { useState } from "react";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { SlMap } from "react-icons/sl";
 import { FaStar } from "react-icons/fa";
 import FeaturesList from "../FeaturesList/FeaturesList";
 import { formatLocation, formatPrice } from "../../utils/formatters";
+import clsx from "clsx";
 
 // Не реалізована можливість додавати у вибране. На доробці.
 export default function CamperCard({ data }) {
   const image = data.gallery[0];
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const handleFavoriteClick = () => {
+    setIsFavorite((prev) => !prev);
+  };
 
   return (
     <div className={css.containerCard}>
@@ -19,7 +26,10 @@ export default function CamperCard({ data }) {
             <h2 className={css.title}>{data.name}</h2>
             <span className={css.priceAndFavourite}>
               <p>€{formatPrice(data.price)}</p>
-              <IoMdHeartEmpty className={css.heart} />
+              <IoMdHeartEmpty
+                onClick={handleFavoriteClick}
+                className={clsx(css.heart, isFavorite && css.activeHeart)}
+              />
             </span>
           </div>
 
