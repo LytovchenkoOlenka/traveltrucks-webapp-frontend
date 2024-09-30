@@ -19,7 +19,6 @@ export default function LocationFilter() {
       <div className={css.inputWrapper}>
         <input
           className={css.locationInput}
-          // id="location"
           type="text"
           defaultValue={location}
           onChange={handleLocationChange}

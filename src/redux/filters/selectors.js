@@ -53,9 +53,6 @@ export const selectFiltredCampers = createSelector(
 
     if (normalizedVehicleType.length > 0) {
       filteredCampers = filteredCampers.filter((camper) => {
-        console.log(
-          `Checking vehicle type: ${camper.form} === ${normalizedVehicleType}`
-        );
         return camper.form === normalizedVehicleType;
       });
     }

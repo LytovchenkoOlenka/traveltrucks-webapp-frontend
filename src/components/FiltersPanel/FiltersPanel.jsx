@@ -14,7 +14,6 @@ const getActiveClass = (isSelected) => {
   return clsx(css.checkFilter, isSelected && css.active);
 };
 
-// Фільтрація буде дороблена для коректного відображення списку фільтрів.
 export default function FiltersPanel() {
   const dispatch = useDispatch();
   const { vehicleEquipment, vehicleType } = useSelector(selectFilters);

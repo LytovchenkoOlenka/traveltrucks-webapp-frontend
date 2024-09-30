@@ -19,6 +19,7 @@ export default function Loader() {
   );
 }
 
+//Можна додати анімований лоадер їдучої машинки
 //   <div className={css.loader}>
 //     <Lottie animationData={carAnimation} loop />
 //   </div>;
