@@ -41,8 +41,18 @@
   line-height: 1.33;
 }
 
-.heart {
+.favoriteBtn {
+  display: flex;
+  align-items: center;
   margin-left: 13px;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.heart {
+  width: 26px;
+  height: 24px;
 }
 
 .activeHeart {
@@ -85,8 +95,6 @@
   border-radius: 100px;
   padding: 12px 18px;
   width: max-content;
-  /* padding: 0 18px; */
-  /* height: 48px; */
   background: var(--badges);
   display: flex;
   justify-content: center;
@@ -101,20 +109,3 @@
   text-align: center;
   color: var(--main);
 }
-
-/* .button {
-  display: inline-block;
-  border-radius: 200px;
-  padding: 16px 48px;
-  width: fit-content;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--white);
-  background-color: var(--button);
-  transition: background-color 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.button:hover {
-  background-color: var(--button-hover);
-} */

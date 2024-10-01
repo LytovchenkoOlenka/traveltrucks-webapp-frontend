@@ -40,10 +40,11 @@ export default function CamperCard({ data }) {
             <h2 className={css.title}>{data.name}</h2>
             <span className={css.priceAndFavourite}>
               <p>€{formatPrice(data.price)}</p>
-              <IoMdHeartEmpty
-                onClick={handleFavoriteClick}
-                className={clsx(css.heart, isFavorite && css.activeHeart)}
-              />
+              <button onClick={handleFavoriteClick} className={css.favoriteBtn}>
+                <IoMdHeartEmpty
+                  className={clsx(css.heart, isFavorite && css.activeHeart)}
+                />
+              </button>
             </span>
           </div>
 
