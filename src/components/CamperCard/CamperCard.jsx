@@ -4,30 +4,34 @@ import { SlMap } from "react-icons/sl";
 import { FaStar } from "react-icons/fa";
 import FeaturesList from "../FeaturesList/FeaturesList";
 import { formatLocation, formatPrice } from "../../utils/formatters";
-import {
-  addToFavorites,
-  removeFromFavorites,
-} from "../../redux/favorites/slice";
-import { useDispatch, useSelector } from "react-redux";
-import { selectFavorites } from "../../redux/favorites/selectors";
 
 import clsx from "clsx";
+import { useEffect, useState } from "react";
 
-//Додається у обране, але одразу, а не після перезавантаження. На доробці.
 export default function CamperCard({ data }) {
+  const [isFavorite, setIsFavorite] = useState(false);
   const image = data.gallery[0];
-  const dispatch = useDispatch();
-  const favorites = useSelector(selectFavorites);
-  console.log(favorites);
 
-  const isFavorite = favorites.some((camper) => camper.id === data.id);
+  useEffect(() => {
+    const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    const isFav = savedFavorites.some((camper) => camper.id === data.id);
+    setIsFavorite(isFav);
+  }, [data.id]);
 
   const handleFavoriteClick = () => {
+    const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    let updatedFavorites;
     if (isFavorite) {
-      dispatch(removeFromFavorites({ id: data.id }));
+      updatedFavorites = savedFavorites.filter(
+        (camper) => camper.id !== data.id
+      );
+      setIsFavorite(false);
     } else {
-      dispatch(addToFavorites(data));
+      updatedFavorites = [...savedFavorites, data];
+      setIsFavorite(true);
     }
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   };
 
   return (
