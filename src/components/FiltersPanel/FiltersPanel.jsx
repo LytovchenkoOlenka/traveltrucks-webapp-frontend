@@ -20,7 +20,7 @@ const iconsMap = {
   TV: "icon-tv",
   Kitchen: "icon-kitchen",
   Bathroom: "icon-bathroom",
-  Automatic: "icon-automatic",
+  Automatic: "icon-transmission",
   Van: "icon-van",
   "Fully Integrated": "icon-fully",
   Alcove: "icon-alcove",
