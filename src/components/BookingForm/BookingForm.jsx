@@ -4,7 +4,7 @@ import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
 
-const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
+import DatePickerField from "../DatePickerField/DatePickerField";
 
 const FeedbackSchema = Yup.object().shape({
   name: Yup.string()
@@ -16,12 +16,24 @@ const FeedbackSchema = Yup.object().shape({
     .max(30, "Email address must contain no more than 30 characters")
     .required("Please fill in the field")
     .email("Please enter a valid email address"),
-
-  // Тимчасовий варіант для дати, в подальшому буде реалізація через react-datepicker
-  date: Yup.string()
-    .matches(dateRegex, "Please enter a valid date in the format DD/MM/YYYY")
-    .required("Please fill in the field"),
+  date: Yup.date().required("Please fill in the field"),
 });
+
+// const validationSchema = Yup.object({
+//   name: Yup.string()
+//     .trim()
+//     .max(50, "Name can't exceed 50 characters")
+//     .required("Name is required"),
+//   email: Yup.string()
+//     .email("Invalid email format")
+//     .required("Email is required"),
+//   bookingDate: Yup.date()
+//     .required("Booking date is required")
+//     .min(new Date(), "Only future dates!"),
+//   comment: Yup.string()
+//     .trim()
+//     .max(500, "Comment can't exceed 500 characters"),
+// });
 
 const initialValues = {
   name: "",
@@ -84,11 +96,10 @@ export default function BookingForm() {
             required
           />
           <Field
-            type="text"
             className={css.input}
+            component={DatePickerField}
             placeholder="Booking date*"
             name="date"
-            required
           />
           <Field
             as="textarea"
