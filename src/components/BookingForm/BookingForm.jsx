@@ -10,30 +10,17 @@ const FeedbackSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, "The name must consist of at least 3 characters")
     .max(40, "The name must contain a maximum of 40 characters")
-    .required("Please fill in the field"),
+    .required("Name is required"),
   email: Yup.string()
     .min(6, "Email address must contain at least 6 characters")
     .max(30, "Email address must contain no more than 30 characters")
-    .required("Please fill in the field")
+    .required("Email is required")
     .email("Please enter a valid email address"),
-  date: Yup.date().required("Please fill in the field"),
+  date: Yup.date()
+    .required("Booking date is required")
+    .min(new Date(), "Only future dates!"),
+  comment: Yup.string().trim().max(500, "Comment can't exceed 500 characters"),
 });
-
-// const validationSchema = Yup.object({
-//   name: Yup.string()
-//     .trim()
-//     .max(50, "Name can't exceed 50 characters")
-//     .required("Name is required"),
-//   email: Yup.string()
-//     .email("Invalid email format")
-//     .required("Email is required"),
-//   bookingDate: Yup.date()
-//     .required("Booking date is required")
-//     .min(new Date(), "Only future dates!"),
-//   comment: Yup.string()
-//     .trim()
-//     .max(500, "Comment can't exceed 500 characters"),
-// });
 
 const initialValues = {
   name: "",
@@ -41,6 +28,7 @@ const initialValues = {
   date: "",
   comment: "",
 };
+
 const handleSubmit = (values, actions) => {
   toast.success("Camper successfully booked!", {
     style: {
@@ -50,22 +38,6 @@ const handleSubmit = (values, actions) => {
   });
   actions.resetForm();
 };
-
-//Тут ще буде додане висвічування помилок юзеру під кожним полем після валідації. І відправка форми тільки після проходження  всіх валідацій.
-
-// const handleSubmit = (values, actions) => {
-//   if (actions.isValid) {
-//     toast.success("Camper successfully booked!", {
-//       style: {
-//         color: "#101828",
-//         backgroundColor: "lightgreen",
-//       },
-//     });
-//   } else {
-//     toast.error("Please correct the errors in the form.");
-//   }
-//   actions.resetForm();
-// };
 
 export default function BookingForm() {
   return (

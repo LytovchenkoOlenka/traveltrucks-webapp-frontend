@@ -31,6 +31,7 @@ export default function DatePickerField({
       selected={startDate}
       onChange={handleChange}
       dateFormat="dd/MM/yyyy"
+      minDate={new Date()}
       placeholderText={placeholder}
       {...props}
     />
