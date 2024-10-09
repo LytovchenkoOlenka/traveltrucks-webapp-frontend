@@ -3,8 +3,7 @@
   border: 1px solid var(--light-gray);
   border-radius: 10px;
   padding: 44px 57px;
-  /* width: 641px; */
-  height: 588px;
+  width: 641px;
 }
 
 .formTitle {
@@ -22,10 +21,10 @@
 }
 
 .form {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   gap: 14px;
-  width: 527px;
+  width: 100%;
 }
 
 .input {
@@ -38,6 +37,8 @@
   font-size: 18px;
   line-height: 1.5;
   color: var(--main-black);
+  box-sizing: border-box;
+  width: inherit;
 }
 
 .input::placeholder {
@@ -54,5 +55,4 @@
 
 .textArea {
   resize: none;
-  height: 82px;
 }

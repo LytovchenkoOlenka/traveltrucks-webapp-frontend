@@ -1,0 +1,115 @@
+/* Загальний контейнер календаря  */
+.react-datepicker {
+  max-width: 276px;
+  border: 1px solid var(--text);
+  border-radius: 12px;
+  font-family: "Inter", sans-serif;
+  line-height: 1.5;
+}
+
+/* Підказка, яка вказує на елемент, що випадає */
+.react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle {
+  fill: var(--white);
+}
+
+.react-datepicker-popper .react-datepicker__triangle {
+  stroke: var(--text);
+}
+
+/* Стиль заголовка (місяць і рік) */
+.react-datepicker__header {
+  background-color: transparent;
+  border-bottom: 1px solid var(--text);
+  padding: 12px;
+}
+/* 
+
+/* Навігаційні стрілки */
+.react-datepicker__navigation {
+  top: 10px;
+  height: 24px;
+  width: 24px;
+  margin: 0 !important;
+}
+
+.react-datepicker__navigation--previous {
+  left: 12px;
+}
+
+.react-datepicker__navigation--next {
+  right: 12px;
+}
+
+/* Дні тижня (назви) */
+.react-datepicker__day-names {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.react-datepicker__day-name {
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text);
+  text-transform: uppercase;
+  padding: 0;
+}
+
+/* Місяць */
+.react-datepicker__month {
+  padding: 12px;
+  margin: unset;
+  text-align: unset;
+}
+
+.react-datepicker__current-month {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* день */
+.react-datepicker__day {
+  justify-content: center;
+  align-items: center;
+  color: var(--main-black);
+  display: inline-block;
+  width: 36px;
+  height: 32px;
+  text-align: center;
+  margin: unset;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day:focus,
+.react-datepicker__day:active,
+.react-datepicker__day--keyboard-selected {
+  border-radius: 32px;
+  background-color: var(--text);
+  color: var(--inputs);
+}
+
+.react-datepicker__day:hover {
+  border-radius: 32px !important;
+  background-color: var(--light-gray) !important;
+}
+
+.react-datepicker__day--outside-month {
+  color: var(--text);
+}
+
+/* День сьогоднішнього дня */
+/* .react-datepicker__day--today {
+  border-radius: 32px;
+  width: 36px;
+  height: 32px;
+  background: var(--light-gray);
+  color: var(--main-black);
+} */
