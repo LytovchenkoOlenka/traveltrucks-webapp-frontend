@@ -7,6 +7,10 @@
   line-height: 1.5;
 }
 
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
 /* Підказка, яка вказує на елемент, що випадає */
 .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle {
   fill: var(--white);
