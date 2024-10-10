@@ -1,39 +1,29 @@
-import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./DatePickerField.css";
-import PropTypes from "prop-types";
-
-DatePickerField.PropTypes = {
-  field: PropTypes.object.isRequired,
-  form: PropTypes.object.isRequired,
-  placeholder: PropTypes.string,
-};
 
 export default function DatePickerField({
   className,
   field,
   form,
   placeholder,
-  ...props
 }) {
-  const [startDate, setStartDate] = useState(null);
+  const { name, value } = field; // Отримуємо назву та значення поля із `field`
+  const { setFieldValue } = form;
 
   const handleChange = (date) => {
-    setStartDate(date);
-    form.setFieldValue(field.name, date);
+    setFieldValue(name, date); // Оновлюємо значення у `Formik` без локального стану
   };
 
   return (
     <DatePicker
+      {...field} // Передаємо поле `field` з `Formik`
       className={className}
       formatWeekDay={(day) => day.slice(0, 3)}
-      selected={startDate}
+      selected={value || null} // Використовуємо значення з `Formik` замість локального стану
       onChange={handleChange}
       dateFormat="dd/MM/yyyy"
-      minDate={new Date()}
       placeholderText={placeholder}
-      {...props}
     />
   );
 }
