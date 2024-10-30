@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   changeVehicleEquipment,
   changeVehicleType,
+  changeLocation,
 } from "../../redux/filters/slice";
 import sprite from "../../assets/icons.svg";
 
@@ -32,6 +33,11 @@ export default function FiltersPanel() {
 
   const [localEquipment, setLocalEquipment] = useState(vehicleEquipment);
   const [localType, setLocalType] = useState(vehicleType);
+  const [localLocation, setLocalLocation] = useState("");
+
+  const handleLocationChange = (newLocation) => {
+    setLocalLocation(newLocation);
+  };
 
   const handleEquipmentChange = (event) => {
     const { name, checked } = event.target;
@@ -52,11 +58,15 @@ export default function FiltersPanel() {
   const handleSearch = () => {
     dispatch(changeVehicleEquipment(localEquipment));
     dispatch(changeVehicleType(localType));
+    dispatch(changeLocation(localLocation));
   };
 
   return (
     <section className={css.filtersContainer}>
-      <LocationFilter />
+      <LocationFilter
+        location={localLocation}
+        onLocationChange={handleLocationChange}
+      />
       <div className={css.container}>
         <h3 className={css.titleFilters}>Filters</h3>
 
