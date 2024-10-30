@@ -2,15 +2,12 @@ import { useState } from "react";
 import LocationFilter from "../LocationFilter/LocationFilter";
 import css from "./FiltersPanel.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  changeVehicleEquipment,
-  changeVehicleType,
-  changeLocation,
-} from "../../redux/filters/slice";
+import { setFilters } from "../../redux/filters/slice";
 import sprite from "../../assets/icons.svg";
 
 import { selectFilters } from "../../redux/filters/selectors";
 import clsx from "clsx";
+import { fetchCampers } from "../../redux/campers/operations";
 
 const getActiveClass = (isSelected) => {
   return clsx(css.checkFilter, isSelected && css.active);
@@ -29,42 +26,50 @@ const iconsMap = {
 
 export default function FiltersPanel() {
   const dispatch = useDispatch();
-  const { vehicleEquipment, vehicleType } = useSelector(selectFilters);
+  const filters = useSelector(selectFilters);
+  const { page, perPage } = useSelector((state) => state.campers);
 
-  const [localEquipment, setLocalEquipment] = useState(vehicleEquipment);
-  const [localType, setLocalType] = useState(vehicleType);
-  const [localLocation, setLocalLocation] = useState("");
+  const [localFilters, setLocalFilters] = useState(filters);
 
   const handleLocationChange = (newLocation) => {
-    setLocalLocation(newLocation);
+    setLocalFilters((prevFilters) => ({
+      ...prevFilters,
+      location: newLocation,
+    }));
   };
 
   const handleEquipmentChange = (event) => {
     const { name, checked } = event.target;
-    let updatedEquipment = [...localEquipment];
+    let updatedEquipment = [...localFilters.vehicleEquipment];
+
     if (checked) {
       updatedEquipment.push(name);
     } else {
       updatedEquipment = updatedEquipment.filter((item) => item !== name);
     }
-    setLocalEquipment(updatedEquipment);
+
+    setLocalFilters((prevFilters) => ({
+      ...prevFilters,
+      vehicleEquipment: updatedEquipment,
+    }));
   };
 
   const handleTypeChange = (type) => {
-    const updatedType = localType === type ? "" : type;
-    setLocalType(updatedType);
+    setLocalFilters((prevFilters) => ({
+      ...prevFilters,
+      vehicleType: prevFilters.vehicleType === type ? "" : type,
+    }));
   };
 
   const handleSearch = () => {
-    dispatch(changeVehicleEquipment(localEquipment));
-    dispatch(changeVehicleType(localType));
-    dispatch(changeLocation(localLocation));
+    dispatch(setFilters(localFilters));
+    dispatch(fetchCampers({ page, perPage }));
   };
 
   return (
     <section className={css.filtersContainer}>
       <LocationFilter
-        location={localLocation}
+        location={localFilters.location}
         onLocationChange={handleLocationChange}
       />
       <div className={css.container}>
@@ -78,13 +83,15 @@ export default function FiltersPanel() {
             {["AC", "TV", "Kitchen", "Bathroom", "Automatic"].map(
               (equipment) => (
                 <label
-                  className={getActiveClass(localEquipment.includes(equipment))}
+                  className={getActiveClass(
+                    localFilters.vehicleEquipment.includes(equipment)
+                  )}
                   key={equipment}
                 >
                   <input
                     type="checkbox"
                     name={equipment}
-                    checked={localEquipment.includes(equipment)}
+                    checked={localFilters.vehicleEquipment.includes(equipment)}
                     onChange={handleEquipmentChange}
                   />
                   <svg className={css.icon}>
@@ -107,7 +114,7 @@ export default function FiltersPanel() {
               <button
                 key={type}
                 type="button"
-                className={getActiveClass(localType === type)}
+                className={getActiveClass(localFilters.vehicleType === type)}
                 onClick={() => handleTypeChange(type)}
               >
                 <svg className={css.icon}>

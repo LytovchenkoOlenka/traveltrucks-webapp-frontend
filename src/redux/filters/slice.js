@@ -8,18 +8,11 @@ const filtersSlice = createSlice({
     vehicleType: "",
   },
   reducers: {
-    changeLocation: (state, action) => {
-      state.location = action.payload;
-    },
-    changeVehicleEquipment: (state, action) => {
-      state.vehicleEquipment = action.payload;
-    },
-    changeVehicleType: (state, action) => {
-      state.vehicleType = action.payload;
+    setFilters: (state, action) => {
+      return { ...state, ...action.payload };
     },
   },
 });
 
-export const { changeLocation, changeVehicleEquipment, changeVehicleType } =
-  filtersSlice.actions;
+export const { setFilters } = filtersSlice.actions;
 export default filtersSlice.reducer;
