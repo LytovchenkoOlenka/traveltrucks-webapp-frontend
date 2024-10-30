@@ -14,7 +14,7 @@ const campersSlice = createSlice({
     isLoading: false,
     error: null,
     page: 1,
-    perPage: 4,
+    perPage: 23,
     total: 0,
   },
   reducers: {
