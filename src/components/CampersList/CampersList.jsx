@@ -1,23 +1,29 @@
 import css from "./CampersList.module.css";
 import CamperCard from "../CamperCard/CamperCard";
+import Loader from "../Loader/Loader";
 import { selectFiltredCampers } from "../../redux/filters/selectors";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { fetchCampers } from "../../redux/campers/operations";
+import { useDispatch, useSelector } from "react-redux";
+import { selectLoading } from "../../redux/campers/selectors";
 
 export default function CampersList() {
+  const dispatch = useDispatch();
   const filteredCampers = useSelector(selectFiltredCampers);
+  const isLoading = useSelector(selectLoading);
+  const { page, total, perPage, items } = useSelector((state) => state.campers);
 
-  // ДО ВИПРАВЛЕННЯ. Пагінація зараз дуже примітивна. Буде розширена.
-  const [visibleCount, setVisibleCount] = useState(4);
   const handleLoadMore = () => {
-    setVisibleCount((prevCount) => prevCount + 4);
+    if (items.length < total) {
+      const nextPage = page + 1;
+      dispatch(fetchCampers({ page: nextPage, perPage }));
+    }
   };
 
   return (
     <section className={css.containerCatalog}>
       <ul className={css.campersList}>
         {filteredCampers.length !== 0 ? (
-          filteredCampers.slice(0, visibleCount).map((camper) => (
+          filteredCampers.map((camper) => (
             <li className={css.item} key={camper.id}>
               <CamperCard data={camper} />
             </li>
@@ -27,9 +33,9 @@ export default function CampersList() {
         )}
       </ul>
 
-      {visibleCount < filteredCampers.length && (
+      {items.length < total && (
         <button className={css.button} onClick={handleLoadMore}>
-          Load more
+          {isLoading ? <Loader /> : "Load more"}
         </button>
       )}
     </section>
