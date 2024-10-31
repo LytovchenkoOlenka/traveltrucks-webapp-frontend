@@ -3,22 +3,28 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 axios.defaults.baseURL = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io";
 
-const createFilterParams = (filters) => {
-  const params = new URLSearchParams();
-  if (filters.location) params.append("location", filters.location);
-  if (filters.vehicleType) params.append("form", filters.vehicleType);
-
-  filters.vehicleEquipment.forEach((equipment) => {
-    params.append(equipment, "true");
-  });
-};
-
 export const fetchCampers = createAsyncThunk(
   "campers/fetchAll",
-  async ({ page, perPage }, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const filters = state.filters;
-    const filterParams = createFilterParams(filters);
+  async ({ page, perPage, filters }, thunkAPI) => {
+    // Копіюємо об'єкт фільтрів та видаляємо порожні значення
+    const filterParamsObj = { ...filters };
+
+    // Обробка параметра vehicleEquipment, щоб створити окремі параметри для кожного обладнання
+    if (filters.vehicleEquipment) {
+      filters.vehicleEquipment.forEach((equipment) => {
+        filterParamsObj[equipment] = true;
+      });
+      delete filterParamsObj.vehicleEquipment; // Видаляємо оригінальний масив
+    }
+
+    // Видаляємо ключі з порожніми значеннями
+    Object.keys(filterParamsObj).forEach((key) => {
+      if (filterParamsObj[key] === "" || filterParamsObj[key] === undefined) {
+        delete filterParamsObj[key];
+      }
+    });
+
+    const filterParams = new URLSearchParams(filterParamsObj).toString();
 
     try {
       const response = await axios.get(
@@ -42,3 +48,13 @@ export const getCamperById = createAsyncThunk(
     }
   }
 );
+
+// const createFilterParams = (filters) => {
+//   const params = new URLSearchParams();
+//   if (filters.location) params.append("location", filters.location);
+//   if (filters.vehicleType) params.append("form", filters.vehicleType);
+
+//   filters.vehicleEquipment.forEach((equipment) => {
+//     params.append(equipment, "true");
+//   });
+// };

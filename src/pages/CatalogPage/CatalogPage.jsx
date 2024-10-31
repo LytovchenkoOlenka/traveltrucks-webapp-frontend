@@ -7,30 +7,32 @@ import { fetchCampers } from "../../redux/campers/operations";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { selectLoading } from "../../redux/campers/selectors";
-// import { selectFiltredCampers } from "../../redux/filters/selectors";
+import { selectFilters } from "../../redux/filters/selectors";
 
 import { addToFavorites } from "../../redux/favorites/slice";
 
 export default function CatalogPage() {
-  // const filteredCampers = useSelector(selectFiltredCampers);
+  const filters = useSelector(selectFilters);
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoading);
   const { page, total, perPage, items } = useSelector((state) => state.campers);
 
+  console.log(filters);
+
   useEffect(() => {
     if (items.length === 0) {
-      dispatch(fetchCampers({ page, perPage }));
+      dispatch(fetchCampers({ page, perPage, filters }));
     }
 
     const savedFavorites = JSON.parse(localStorage.getItem("favorites"));
     if (savedFavorites && Array.isArray(savedFavorites)) {
       savedFavorites.forEach((favorite) => dispatch(addToFavorites(favorite)));
     }
-  }, [dispatch, items.length, perPage, page]);
+  }, [dispatch, items.length, perPage, page, filters]);
 
   const handleLoadMore = () => {
     if (items.length < total) {
-      dispatch(fetchCampers({ page: page + 1, perPage }));
+      dispatch(fetchCampers({ page: page + 1, perPage, filters }));
     }
   };
 
