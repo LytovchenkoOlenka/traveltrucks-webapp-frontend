@@ -63,7 +63,7 @@ export default function FiltersPanel() {
 
   const handleSearch = () => {
     dispatch(setFilters(localFilters));
-    dispatch(fetchCampers({ page, perPage, filters }));
+    dispatch(fetchCampers({ page, perPage, filters: localFilters }));
   };
 
   return (

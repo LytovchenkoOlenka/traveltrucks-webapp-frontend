@@ -28,7 +28,9 @@ export const fetchCampers = createAsyncThunk(
 
     try {
       const response = await axios.get(
-        `/campers?page=${page}&limit=${perPage}&${filterParams}`
+        `/campers?page=${page}&limit=${perPage}${
+          filterParams ? `&${filterParams}` : ""
+        }`
       );
       return { items: response.data.items, total: response.data.total, page };
     } catch (error) {
